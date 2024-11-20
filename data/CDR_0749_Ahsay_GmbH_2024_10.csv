@@ -1,0 +1,2 @@
+From number,To number,Admin profit,Service provider profit,Organization profit,Call started,Call answered,Call type,Call disposition,Duration,Cost,Profit,Flow,Application,Organization,User,Service provider,Channel prefix,Channel name,Caller ID
+0749*999,069971973639,0.001833,-0.001833,0,2024-10-01 10:58:45,2024-10-01 10:58:46,out,ANSWERED,11,0,0.001833,out,Dial,GmbH,kommpet,SIPNow,069971973639,colt telecom,"+492418881175 via Umleitung kommpet" <+4960216262501>

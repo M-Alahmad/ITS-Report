@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="/public/js/autocomplete.js" defer></script>
+    <title>Download CSV</title>
+</head>
+<body>
+    <?php include_once __DIR__ . '/../shared/header.html'; ?>
+    <div class="container">
+        <h1>Download Sipnow Data</h1>
+
+        <!-- Search with Autocomplete -->
+        <form method="GET" action="/download-csv">
+            <label for="company_name">Company Name:</label>
+            <input type="text" id="company_name" name="company_name" placeholder="Enter company name..." autocomplete="off">
+            <div id="autocomplete-suggestions" class="autocomplete-suggestions"></div>
+            <button type="submit" class="btn btn-primary">Download CSV for Company</button>
+        </form>
+<br>
+        <form method="GET" action="/download-all-csv">
+            <button type="submit" class="btn btn-primary">Download All CSV Files</button>
+        </form>
+    </div>
+    <?php include_once __DIR__ . '/../shared/footer.html'; ?>
+</body>
+</html>

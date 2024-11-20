@@ -1,0 +1,4 @@
+From number,To number,Admin profit,Service provider profit,Organization profit,Call started,Call answered,Call type,Call disposition,Duration,Cost,Profit,Flow,Application,Organization,User,Service provider,Channel prefix,Channel name,Caller ID
+0764*100,004917630412385,0.030883,-0.030883,0,2024-10-01 08:59:03,2024-10-01 08:59:17,out,ANSWERED,170,0,0.030883,out,Dial,GmbH,ECCG 00,SIPNow,004917630412385,colt telecom,"Zentrale ECCG 00" <+49610480936400>
+0764*100,015750808943,0.000908,-0.000908,0,2024-10-01 11:05:18,2024-10-01 11:05:20,out,ANSWERED,5,0,0.000908,out,Dial,GmbH,ECCG 00,SIPNow,015750808943,colt telecom,"Zentrale ECCG 00" <+49610480936400>
+0764*100,015750808943,0.000545,-0.000545,0,2024-10-01 11:06:10,2024-10-01 11:06:12,out,ANSWERED,3,0,0.000545,out,Dial,GmbH,ECCG 00,SIPNow,015750808943,colt telecom,"Zentrale ECCG 00" <+49610480936400>

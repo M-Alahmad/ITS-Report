@@ -1,0 +1,2 @@
+From number,To number,Admin profit,Service provider profit,Organization profit,Call started,Call answered,Call type,Call disposition,Duration,Cost,Profit,Flow,Application,Organization,User,Service provider,Channel prefix,Channel name,Caller ID
+0704*120,069971973501,0.012667,-0.012667,0,2024-10-08 07:55:45,2024-10-08 07:55:46,out,ANSWERED,76,0,0.012667,out,Dial,GmbH,Zentrale,SIPNow,069971973501,colt telecom,+4963248364914

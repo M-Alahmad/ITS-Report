@@ -1,0 +1,5 @@
+From number,To number,Admin profit,Service provider profit,Organization profit,Call started,Call answered,Call type,Call disposition,Duration,Cost,Profit,Flow,Application,Organization,User,Service provider,Channel prefix,Channel name,Caller ID
+0827*100,06980912111,0.010167,-0.010167,0,2024-10-01 08:14:48,2024-10-01 08:15:02,out,ANSWERED,61,0,0.010167,out,Dial,Bachus,Bachus,SIPNow,06980912111,colt telecom,"Jürgen R. Bachus" <+4969348712590>
+0827*100,06980913065,0.001333,-0.001333,0,2024-10-01 08:16:21,2024-10-01 08:16:39,out,ANSWERED,8,0,0.001333,out,Dial,Bachus,Bachus,SIPNow,06980913065,colt telecom,"Jürgen R. Bachus" <+4969348712590>
+0827*100,06980913065,0.0005,-0.0005,0,2024-10-02 06:22:21,2024-10-02 06:22:38,out,ANSWERED,3,0,0.0005,out,Dial,Bachus,Bachus,SIPNow,06980913065,colt telecom,"Jürgen R. Bachus" <+4969348712590>
+0827*100,+491705243142,0.017985,-0.017985,0,2024-10-02 06:32:21,2024-10-02 06:32:27,out,ANSWERED,99,0,0.017985,out,Dial,Bachus,Bachus,SIPNow,+491705243142,colt telecom,"Jürgen R. Bachus" <+4969348712590>

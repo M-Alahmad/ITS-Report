@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <script src="/public/js/vsphere-autocomplete.js" defer></script>
+    <title>vSphere Search</title>
+</head>
+<body>
+    <?php include_once __DIR__ . '/../shared/header.html'; ?>
+    <div class="container">
+        <h1>Search Resource Pools</h1>
+        <form id="resource-pool-form">
+            <label for="resource_pool">Resource Pool:</label>
+            <input type="text" id="resource_pool" name="resource_pool" placeholder="Type to search..." autocomplete="off">
+            <div id="autocomplete-suggestions" class="autocomplete-suggestions"></div>
+            <button type="button" id="search-resource-pool" class="btn btn-primary">Search</button>
+        </form>
+        <div id="resource-pool-results" class="data-display">
+            <h2>VM Details</h2>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>VM Name</th>
+                        <th>CPU Count</th>
+                        <th>Memory (GB)</th>
+                        <th>Disk Capacity (GB)</th>
+                        <th>Disk Used (GB)</th>
+                    </tr>
+                </thead>
+                <tbody id="vm-details"></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
