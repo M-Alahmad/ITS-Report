@@ -2,7 +2,7 @@
 
 require_once 'router.php';
 require_once 'vendor/autoload.php';
-
+require_once __DIR__ . '/Core/Helpers/helpers.php';
 use App\Controllers\AuthController;
 use App\Controllers\SipnowController;
 use App\Controllers\AdminController;
@@ -72,20 +72,21 @@ post('/admin/delete-user', function () {
 
 // Sipnow Routes
 
-get('/sipnow/download', function () {
+get('/sipnow', function () {
     authRequired(function () {
-        require_once __DIR__ . '/App/Views/sipnow/download.html';
+        $sipnowController = new SipnowController();
+        $sipnowController->index();
     });
 });
 
-post('/import-sipnow-data', function () {
+post('/sipnow/importCsvData', function () {
     authRequired(function () {
         $sipnowController = new SipnowController();
         $sipnowController->importCsvData();
     });
 });
 
-get('/download-csv', function () {
+get('/sipnow/downloadCsv', function () {
     authRequired(function () {
         $sipnowController = new SipnowController();
         $companyName = isset($_GET['company_name']) ? $_GET['company_name'] : null;
@@ -93,72 +94,50 @@ get('/download-csv', function () {
     });
 });
 
-get('/download-all-csv', function () {
+get('/sipnow/downloadAllCsv', function () {
     authRequired(function () {
         $sipnowController = new SipnowController();
         $sipnowController->downloadAllCsv();
     });
 });
 
-get('/search-companies', function () {
-    $db = (new \Core\Database\Database())->getConnection();
-
-    $query = isset($_GET['query']) ? $_GET['query'] : '';
-    if ($query) {
-        $stmt = $db->prepare("SELECT DISTINCT company_name FROM call_records WHERE company_name LIKE :query LIMIT 10");
-        $stmt->execute([':query' => "%$query%"]);
-        $companies = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-        echo json_encode($companies);
-    } else {
-        echo json_encode([]);
-    }
-});
-// Vsphere Routes
-get('/import-vsphere-data', function () {
+get('/sipnow/getCompanySuggestions', function () {
     authRequired(function () {
-        $vsphereController = new VsphereController();
+        $sipnowController = new \App\Controllers\SipnowController();
+        $sipnowController->getCompanySuggestions();
+    });
+});
+
+// Vsphere Routes
+// Import vSphere Data
+post('/vsphere/import', function () {
+    authRequired(function () {
+        $vsphereController = new \App\Controllers\VsphereController();
         $vsphereController->importVmData();
     });
 });
 
+// View vSphere Dashboard
 get('/vsphere/view', function () {
     authRequired(function () {
-        require_once __DIR__ . '/App/Views/vsphere/view.html';
+        $vsphereController = new \App\Controllers\VsphereController();
+        $vsphereController->index();
     });
 });
 
-// Search resource pools
-get('/search-resource-pools', function () {
-    $db = (new \Core\Database\Database())->getConnection();
-    $query = isset($_GET['query']) ? $_GET['query'] : '';
-
-    if ($query) {
-        $stmt = $db->prepare("SELECT DISTINCT resource_pool FROM virtual_machines WHERE resource_pool LIKE :query LIMIT 10");
-        $stmt->execute([':query' => "%$query%"]);
-        $resourcePools = $stmt->fetchAll(PDO::FETCH_COLUMN);
-        echo json_encode($resourcePools);
-    } else {
-        echo json_encode([]);
-    }
+// Autocomplete Resource Pools
+get('/vsphere/resource-pools', function () {
+    authRequired(function () {
+        $vsphereController = new \App\Controllers\VsphereController();
+        $vsphereController->getResourcePoolSuggestions();
+    });
 });
 
-// Fetch VM details by resource pool
-get('/vsphere/search-vms', function () {
-    $db = (new \Core\Database\Database())->getConnection();
-    $resourcePool = isset($_GET['resource_pool']) ? $_GET['resource_pool'] : '';
-
-    if ($resourcePool) {
-        $stmt = $db->prepare("SELECT name, cpu_count, memory_size_GB, disk_capacity_GB, disk_used_GB FROM virtual_machines WHERE resource_pool = :resource_pool");
-        $stmt->execute([':resource_pool' => $resourcePool]);
-        $vms = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        if ($vms) {
-            echo json_encode($vms);
-        } else {
-            echo json_encode(['error' => 'No VMs found for the selected resource pool.']);
-        }
-    } else {
-        echo json_encode(['error' => 'Resource pool name is required.']);
-    }
+// Fetch VMs for a Resource Pool
+get('/vsphere/vms', function () {
+    authRequired(function () {
+        $vsphereController = new \App\Controllers\VsphereController();
+        $resourcePool = $_GET['resource_pool'] ?? '';
+        $vsphereController->searchByResourcePool($resourcePool);
+    });
 });
