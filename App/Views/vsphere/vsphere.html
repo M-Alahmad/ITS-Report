@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vSphere Management</title>
+    <link rel="stylesheet" href="/Public/Css/styles.css">
+    <script src="/Public/Js/vsphere.js" defer></script>
+    <script src="/Public/Js/autocomplete.js" defer></script>
+
+</head>
+<body>
+   
+    <?php include __DIR__ . '/../shared/navbar.html'; ?>
+
+    <main>
+        <!-- Import Section -->
+        <section>
+            <h2>Import VM Data</h2>
+            <button id="importVmDataButton">Import Data</button>
+            <div id="importStatus" class="status-message"></div>
+        </section>
+
+        <!-- Search Section -->
+        <section>
+            <h2>Search Resource Pools</h2>
+            <form id="searchVmsForm">
+                <label for="resourcePool">Resource Pool:</label>
+                <input 
+                    type="text" 
+                    id="resourcePool" 
+                    data-autocomplete="/vsphere/resource-pools" 
+                    data-trigger-search="true" 
+                    data-target-results="results" 
+                    placeholder="Type resource pool name..." 
+                    autocomplete="off">
+                <div class="suggestions"></div>
+            </form>
+        </section>
+
+        <!-- Results Section -->
+        <section>
+            <h2>VM Search Results</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>CPU</th>
+                        <th>Memory (GB)</th>
+                        <th>Disk Capacity (GB)</th> <!-- Updated header -->
+                    </tr>
+                </thead>
+                <tbody id="results"  class="data-display">
+                    <!-- Dynamic data will populate here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <?php include __DIR__ . '/../shared/footer.html'; ?>
+</body>
+</html>

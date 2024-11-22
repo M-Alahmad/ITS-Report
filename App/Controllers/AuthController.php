@@ -22,7 +22,7 @@ class AuthController extends Controller {
 
         if ($user && password_verify($password, $user['password'])) {
             Auth::login($user['id']);
-            header('Location: /sipnow/download');
+            header('Location: /sipnow/view');
             exit();
         } else {
             echo 'Invalid credentials';

@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/public/css/styles.css">
     <title>Login</title>
+    <link rel="stylesheet" href="/Public/Css/styles.css">
 </head>
 <body>
-    <div class="login-container">
+    <main class="login-container">
         <div class="login-box">
-            <img src="/public/images/its_logo.png" alt="Company Logo" class="logo">
-            <h1>Login</h1>
-            <form method="POST" action="/login">
+            <img src="/Public/Images/its_logo.png" alt="Company Logo" class="company-logo">
+            <form action="/login" method="POST">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                <input type="text" id="username" name="username" required>
 
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <input type="password" id="password" name="password" required>
 
-                <button type="submit" class="btn-primary">Login</button>
+                <button type="submit">Login</button>
             </form>
         </div>
-    </div>
+    </main>
 </body>
 </html>

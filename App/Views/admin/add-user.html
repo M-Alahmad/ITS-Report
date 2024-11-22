@@ -3,58 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/styles.css">
-    <title>Admin Dashboard</title>
+    <title>Add User</title>
+    <link rel="stylesheet" href="/Public/Css/styles.css">
 </head>
 <body>
-    <?php include_once __DIR__ . '/../shared/header.html'; ?>
+    <?php include __DIR__ . '/../shared/header.html'; ?>
 
-    <div class="container">
-        <h1>Admin Dashboard</h1>
-
-        <h2>Add New User</h2>
-        <form method="POST" action="/admin/add-user">
-            <label for="username">Username:</label>
+    <main>
+        <form action="/admin/add-user" method="POST" style="max-width: 500px; margin: auto;">
+            <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
 
-            <label for="password">Password:</label>
+            <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
+
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
 
             <button type="submit">Add User</button>
         </form>
+    </main>
 
-        <h2>Existing Users</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Created At</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $adminController = new \App\Controllers\AdminController();
-                $users = $adminController->getUsers();
-                foreach ($users as $user) {
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($user['id']) . "</td>";
-                    echo "<td>" . htmlspecialchars($user['username']) . "</td>";
-                    echo "<td>" . htmlspecialchars($user['created_at']) . "</td>";
-                    echo "<td>
-                        <form method='POST' action='/admin/delete-user' style='display:inline-block;'>
-                            <input type='hidden' name='user_id' value='" . htmlspecialchars($user['id']) . "'>
-                            <button type='submit'>Delete</button>
-                        </form>
-                    </td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-
-    <?php include_once __DIR__ . '/../shared/footer.html'; ?>
+    <?php include __DIR__ . '/../shared/footer.html'; ?>
 </body>
 </html>

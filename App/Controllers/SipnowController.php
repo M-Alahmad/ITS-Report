@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CallRecord;
 use Core\Services\SftpService;
-use Core\Helpers\helpers;
+
 
 class SipnowController extends Controller {
     private $callRecordModel;
@@ -16,8 +16,7 @@ class SipnowController extends Controller {
     }
 
     public function index() {
-        $data = ['user' => $_SESSION['user'] ?? 'Guest'];
-        return \Core\Helpers\view('sipnow.html', $data);
+        return \Core\Helpers\view('vsphere/vsphere.html', ['user' => $_SESSION['user'] ?? 'Guest']);
     }
 
 

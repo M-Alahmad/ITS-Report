@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sipnow Management</title>
+    <link rel="stylesheet" href="/Public/Css/styles.css">
+    <script src="/Public/Js/sipnow.js" defer></script>
+    <script src="/Public/Js/autocomplete.js" defer></script>
+
+
+</head>
+<body>
+    
+    <?php include __DIR__ . '/../shared/navbar.html'; ?>
+
+    <main>
+        <!-- Import Section -->
+        <section>
+            <h2>Import CSV Data</h2>
+            <button id="importCsvButton">Import CSV</button>
+            <div id="importStatus" class="status-message"></div>
+        </section>
+
+        <!-- Search Section -->
+        <section>
+            <h2>Search Company Records</h2>
+            <form id="searchCompanyForm">
+                <label for="companyName">Company Name:</label>
+                <input 
+                    type="text" 
+                    id="companyName" 
+                    data-autocomplete="/sipnow/getCompanySuggestions" 
+                    placeholder="Enter company name..." 
+                    autocomplete="off">
+                <div class="suggestions"></div>
+            </form>
+        </section>
+
+        <!-- Results Section -->
+        <section>
+            <h2>Company Records</h2>
+            <div id="companyResults">
+                <!-- Company-specific data will populate here -->
+            </div>
+        </section>
+    </main>
+
+    <?php include __DIR__ . '/../shared/footer.html'; ?>
+</body>
+</html>

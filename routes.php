@@ -72,7 +72,7 @@ post('/admin/delete-user', function () {
 
 // Sipnow Routes
 
-get('/sipnow', function () {
+get('/sipnow/view', function () {
     authRequired(function () {
         $sipnowController = new SipnowController();
         $sipnowController->index();

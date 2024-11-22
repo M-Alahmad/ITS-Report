@@ -1,35 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => { 
-    const companyNameInput = document.getElementById("companyName");
-    const suggestionsContainer = document.getElementById("autocompleteSuggestions");
+document.addEventListener("DOMContentLoaded", () => {
+    // Import CSV Functionality
+    const importButton = document.getElementById("importCsvButton");
+    const importStatus = document.getElementById("importStatus");
 
-    // Fetch suggestions as the user types
-    companyNameInput.addEventListener("input", () => {
-        const query = companyNameInput.value.trim();
-
-        if (query.length < 2) {
-            suggestionsContainer.innerHTML = ""; // Clear suggestions for short input
-            return;
-        }
-
-        fetch(`/sipnow/getCompanySuggestions?query=${encodeURIComponent(query)}`)
-            .then((response) => response.json())
-            .then((data) => {
-                suggestionsContainer.innerHTML = ""; // Clear previous suggestions
-
-                data.forEach((company) => {
-                    const suggestion = document.createElement("div");
-                    suggestion.textContent = company.company_name;
-                    suggestion.className = "suggestion-item";
-
-                    // On click, populate the input field
-                    suggestion.addEventListener("click", () => {
-                        companyNameInput.value = company.company_name;
-                        suggestionsContainer.innerHTML = ""; // Clear suggestions
-                    });
-
-                    suggestionsContainer.appendChild(suggestion);
-                });
+    importButton.addEventListener("click", () => {
+        fetch('/sipnow/import', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    importStatus.textContent = data.success;
+                    importStatus.classList.add('status-success');
+                    importStatus.classList.remove('status-error');
+                } else {
+                    importStatus.textContent = data.error;
+                    importStatus.classList.add('status-error');
+                    importStatus.classList.remove('status-success');
+                }
             })
-            .catch((error) => console.error("Error fetching company suggestions:", error));
+            .catch(error => {
+                importStatus.textContent = "Failed to import CSV.";
+                importStatus.classList.add('status-error');
+                importStatus.classList.remove('status-success');
+                console.error("Error importing CSV:", error);
+            });
     });
 });

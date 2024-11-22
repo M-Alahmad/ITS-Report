@@ -18,7 +18,7 @@ class VsphereController extends Controller {
      * Display the vSphere dashboard view.
      */
     public function index() {
-        return \Core\Helpers\view('vsphere/view.html', ['user' => $_SESSION['user'] ?? 'Guest']);
+        return \Core\Helpers\view('vsphere/vsphere.html', ['user' => $_SESSION['user'] ?? 'Guest']);
     }
 
     /**
