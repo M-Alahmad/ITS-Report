@@ -16,7 +16,7 @@ class SipnowController extends Controller {
     }
 
     public function index() {
-        return \Core\Helpers\view('vsphere/vsphere.html', ['user' => $_SESSION['user'] ?? 'Guest']);
+        return \Core\Helpers\view('sipnow/sipnow.html', ['user' => $_SESSION['user'] ?? 'Guest']);
     }
 
 
